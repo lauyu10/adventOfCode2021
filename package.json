@@ -1,0 +1,21 @@
+{
+  "name": "adventofcode",
+  "version": "1.0.0",
+  "description": "advent of code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lauyu10/adventOfCode2021.git"
+  },
+  "author": "Laurent Yu$",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lauyu10/adventOfCode2021/issues"
+  },
+  "homepage": "https://github.com/lauyu10/adventOfCode2021#readme",
+  "type": "module"
+}
