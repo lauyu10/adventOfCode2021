@@ -27,6 +27,5 @@ const dataTest = day4.dataReaderTest();
 
 const data = day4.dataReader();
 // day4.launchGamePuzzle1(data);
-day4.launchGamePuzzle2(dataTest);
-console.log(0 - 0 === 0);
+day4.launchGamePuzzle2(data);
 

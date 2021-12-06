@@ -44,31 +44,36 @@ const launchGamePuzzle1 = (data) => {
 const launchGamePuzzle2 = (data) => {
     const numbers = initNumbers(data.shift());
     const players = initPlayers(data);
+    let finishedBoard = new Array(0);
     let stopCount = false;
     let winner = undefined;
     let numberPicked = undefined;
     let lineWinner = undefined
     while (!stopCount) {
         numberPicked = numbers.shift();
-        for(let i = 0; i < players.length; i++){
+        console.log(numberPicked);
+        for (let i = 0; i < players.length; i++) {
+            console.log(i);
             let player = players[i];
             let checkValue = findValue(player, numberPicked);
             if (checkValue !== undefined) {
                 player.boardResult.push(checkValue);
                 lineWinner = winCondition(player);
                 if (lineWinner !== undefined) {
-                    if(players.length === 1){
-                        console.log("coucou");
-                        stopCount = true;
-                        winner = player;
-                        break;
-                    } else {
-                        players.splice(i, 1);
+                    if (finishedBoard.filter(element => element === player).length === 0) {
+                        if (finishedBoard.length === players.length - 1) {
+                            stopCount = true;
+                            winner = player;
+                            break;
+                        } else {
+                            finishedBoard.push(player)
+                        }
                     }
                 }
             }
         }
     }
+    console.log(numbers);
     console.log(winner)
     console.log(numberPicked);
     console.log(sumValuesOfPosition(winner, lineWinner) * numberPicked);
@@ -121,9 +126,9 @@ const findValue = (board, value) => {
 
 const sumValuesOfPosition = (board) => {
     let result = 0;
-    for(let i = 0; i < LIMIT_BOARD; i++){
-        for(let j = 0; j < LIMIT_BOARD; j++){
-            if(!board.boardResult.filter(element => element[0] === i && element[1] === j).length >= 1){
+    for (let i = 0; i < LIMIT_BOARD; i++) {
+        for (let j = 0; j < LIMIT_BOARD; j++) {
+            if (!board.boardResult.filter(element => element[0] === i && element[1] === j).length >= 1) {
                 result += board.board[i][j];
             }
         }
