@@ -2,7 +2,8 @@
 // import day2 from './day2/day2.js';
 // import day3 from "./day3/day3.js";
 // import day4 from './day4/day4.js';
-import day5 from './day5/day5.js';
+// import day5 from './day5/day5.js';
+import day6 from './day6/day6.js';
 
 // const dataDay1 = day1.dataReader();
 
@@ -31,10 +32,15 @@ import day5 from './day5/day5.js';
 // day4.launchGamePuzzle1(data);
 // day4.launchGamePuzzle2(data);
 
-const dataTest = day5.dataReaderTest();
-const data = day5.dataReader();
+// const dataTest = day5.dataReaderTest();
+// const data = day5.dataReader();
 
 // day5.puzzle1(dataTest);
 // day5.puzzle1(data);
 
-day5.puzzle2(data);
+// day5.puzzle2(data);
+
+const dataTest = day6.dataReaderTest();
+const data = day6.dataReader();
+// day6.puzzle1(data);
+day6.puzzle2(data);
