@@ -1,0 +1,53 @@
+cagedb: 0
+
+ab: 1
+gc: 1
+
+
+gcdfa: 2
+cdgba: 2
+
+fcadb: 3
+fbcad: 3
+cdbaf: 3
+cefdb: 3 
+cedba: 3
+bfgea: 3
+cfgab: 3
+
+eafb: 4
+gcbe: 4
+
+cdfbe: 5
+dcbef: 5
+cbgef: 5
+bagce: 5 
+
+cdfgeb: 6
+gadfec: 6
+bcgafe: 6
+
+dab: 7
+cgb: 7
+
+acedgfb: 8
+fdgacbe: 8
+dgebacf: 8
+
+cefabd: 9 
+cefbgd: 9 
+fcgedb: 9 
+fdcagb: 9 
+efabcd: 9 
+
+
+fdgacbe cefdb cefbgd gcbe: 8394
+fcgedb cgb dgebacf gc: 9781
+cg cg fdcagb cbg: 1197
+efabcd cedba gadfec cb: 9361
+gecf egdcabf bgf bfgea: 4873
+gebdcfa ecba ca fadegcb: 8418
+cefg dcbef fcge gbcadfe: 4548
+ed bcgafe cdgba cbgef: 1625
+gbdfcae bgc cg cgb: 8717
+fgae cfgab fg bagce: 4315
