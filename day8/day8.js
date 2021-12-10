@@ -31,15 +31,10 @@ const dataReader = () => {
     return finalData;
 }
 
-const add = (a, b) => {
-    return a + b;
-}
-
-const reOrderLetter = (value) => {
-    let arrayValue = value.split("");
-    arrayValue.sort();
-    console.log(arrayValue.reduce(add));
-    return arrayValue.reduce(add);
+const dataReader2 = () => {
+    const urlFile = './day8/input.txt';
+    let dataRetrieve = String(fileReader(urlFile));
+    return dataRetrieve.split('\n');
 }
 
 const puzzle1 = (data) => {
@@ -48,7 +43,7 @@ const puzzle1 = (data) => {
         let values = element.split(' ');
         values.forEach(value => {
             let lengthValue = value.length;
-            if(lengthValue === 2 || lengthValue === 3 || lengthValue === 4 || lengthValue === 7){
+            if (lengthValue === 2 || lengthValue === 3 || lengthValue === 4 || lengthValue === 7) {
                 counter1478++;
             }
         })
@@ -56,64 +51,78 @@ const puzzle1 = (data) => {
     console.log(counter1478);
 }
 
-const case6Char = (value) => {
-    let valueOrder = reOrderLetter(value);
-    if(valueOrder === DIGIT_0){
-        return '0'; 
-    } else if(valueOrder === DIGIT_6){
-        return '6';
-    } else if(valueOrder === DIGIT_9){
-        return '9';
+const isAnagram = (string1, string2) => {
+    if(string1.length !== string2.length){
+        return false;
     } else {
-        return '';
+        return containsAllChars(string1, string2.split(''));
     }
 }
 
-const case5Char = (value) => {
-    let valueOrder = reOrderLetter(value);
-    if(valueOrder === DIGIT_2){
-        return '2'; 
-    } else if(valueOrder === DIGIT_3){
-        return '3';
-    } else if(valueOrder === DIGIT_5){
-        return '5';
-    } else {
-        return '';
+const containsAllChars = (string, chars) => {
+    for (const char of chars) {
+        if (!string.includes(char)) {
+            return false;
+        }
     }
+    return true;
 }
 
 const puzzle2 = (data) => {
     let sum = 0;
+    const lengthAndValueKnown = {2: 1, 3: 7, 4: 4, 7: 8}
     data.forEach(element => {
-        let values = element.split(' ');
-        let stringToInteger = "";
-        values.forEach(value => {
-            let lengthValue = value.length;
-            switch(lengthValue){
-                case 2: 
-                    stringToInteger += '1';
-                    break;
-                case 3:
-                    stringToInteger += '7';
-                    break;
-                case 4:
-                    stringToInteger += '4';
-                    break;
-                case 7:
-                    stringToInteger += '8';
-                    break;
-                case 6: 
-                    stringToInteger += case6Char(value);
-                    break;
-                case 5:
-                    stringToInteger += case5Char(value);
-                    break;
-                default:
-                    break;
+        const map = {}
+        const twoThreeFive = [];
+        const zeroSixNine = [];
+        let values = element.split(' | ');
+        let modelValue = values[0].split(' ');
+        let valueToCheck = values[1].split(' ');
+        modelValue.forEach(digit => {
+            if (lengthAndValueKnown[digit.length]) {
+                map[lengthAndValueKnown[digit.length]] = digit;
+            } else if (digit.length === 5) {
+                twoThreeFive.push(digit);
+            } else {
+                zeroSixNine.push(digit);
             }
         })
-        console.log(stringToInteger);
-        sum += parseInt(stringToInteger);
+        const charsInOne = map[1].split("");
+        const charsInFour = map[4].split("");
+        const charSpecificToFour = charsInFour.filter(
+            (char) => !charsInOne.includes(char)
+        );
+
+        for (const digit of twoThreeFive) {
+            if (containsAllChars(digit, charsInOne)) {
+                map[3] = digit;
+            } else if (containsAllChars(digit, charSpecificToFour)){
+                map[5] = digit;
+            } else {
+                map[2] = digit;
+            }
+        }
+
+        for (const digit of zeroSixNine) {
+            if (containsAllChars(digit, charsInFour)) {
+                map[9] = digit;
+            } else if (containsAllChars(digit, charSpecificToFour)) {
+                map[6] = digit;
+            } else {
+                map[0] = digit;
+            }
+        }
+
+        let valueToInt = "";
+        for(const checkValue of valueToCheck){
+            for (const [digit, value] of Object.entries(map)) {
+                if (isAnagram(checkValue, value)) {
+                    valueToInt += digit;
+                    break;
+                }
+            }
+        }
+        sum += parseInt(valueToInt);
     })
     console.log(sum);
 }
@@ -121,6 +130,7 @@ const puzzle2 = (data) => {
 const day8 = {
     dataReaderTest,
     dataReader,
+    dataReader2,
     puzzle1,
     puzzle2,
 }
