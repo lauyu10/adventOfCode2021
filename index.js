@@ -7,9 +7,10 @@
 // import day7 from "./day7/day7.js";
 import day8 from './day8/day8.js';
 // import day9 from "./day9/day9.js";
-// import day10 from "./day_10/day10.js"
-// const dataDay1 = day1.dataReader();
+// import day10 from "./day10/day10.js"
+import day11 from "./day11/day11.js";
 
+// const dataDay1 = day1.dataReader();
 // const resultDay1Puzzle1 = day1.puzzle1(dataDay1);
 // const resultDay1Puzzle2 = day1.puzzle2(dataDay1);
 
@@ -54,12 +55,12 @@ import day8 from './day8/day8.js';
 // day7.puzzle2(dataTest);
 // day7.puzzle2(data);
 
-const dataTest = day8.dataReaderTest();
-const data = day8.dataReader();
-const dataReader2 = day8.dataReader2();
+// const dataTest = day8.dataReaderTest();
+// const data = day8.dataReader();
+// const dataReader2 = day8.dataReader2();
 // console.log(data);
 // day8.puzzle1(data);
-day8.puzzle2(dataReader2);
+// day8.puzzle2(dataReader2);
 
 // const dataTest = day9.dataReaderTest();
 // const data = day9.dataReader();
@@ -70,3 +71,8 @@ day8.puzzle2(dataReader2);
 // const data = day10.dataReader();
 // day10.puzzle1(dataTest);
 // day10.puzzle2(data);
+
+const dataTest = day11.dataReaderTest();
+const data = day11.dataReader();
+// day11.puzzle1(data);
+day11.puzzle2(data);

@@ -4,7 +4,7 @@ const SPECIAL_CHAR_OPEN = ['(', '[', '<', '{'];
 const SPECIAL_CHAR_CLOSE = [')', ']', '>', '}'];
 
 const dataReaderTest = () => {
-    const urlFile = './day_10/testDay10.txt';
+    const urlFile = './day10/testDay10.txt';
     let dataRetrieve = String(fileReader(urlFile));
     dataRetrieve = dataRetrieve.split('\r\n');
     return dataRetrieve;
